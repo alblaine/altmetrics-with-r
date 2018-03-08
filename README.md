@@ -1,4 +1,5 @@
 ## R Script for Getting Altmetrics Data for Multiple Scholarly Articles
+*Project by Markus Wust, Alison Blaine, and Erica Hayes*
 
 This R script enables researchers to examine and compare altmetrics data on multiple scholarly articles and create a visualization of the results. 
 
