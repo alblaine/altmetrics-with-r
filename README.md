@@ -22,4 +22,9 @@ A sample dataset has been provided that is a CSV file with a list of DOIs. If yo
 * If you want to run all the code at once, click the Source button.
 
 
+#### Graph output
+
+Your final graph should be useful for comparing the altmetric data on multiple articles at once. Here's what the output looks like using the sample data in doi_list.csv:
+
+![](graph.png)
 
