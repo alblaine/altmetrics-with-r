@@ -1,5 +1,4 @@
 
-
 # Getting Altmetrics Data Using R
 # by Markus Wust, Alison Blaine, and Erica Hayes
 
