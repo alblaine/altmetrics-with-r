@@ -1,4 +1,5 @@
 
+
 # Getting Altmetrics Data Using R
 # by Markus Wust, Alison Blaine, and Erica Hayes
 
@@ -27,7 +28,7 @@ altmetrics(doi="10.1002/prca.201400084")
 
 # Step 4. Read in a CSV file into a data frame with a bunch of dois listed in one column. 
 
-dois <- read_csv("doi_list.csv")
+dois <- read_csv("doi_list.csv") 
 
 dois  #look at the data
 
@@ -57,23 +58,34 @@ raw_metrics <- lapply(dois_list, function(x) getArticleData(x))  #apply getArtic
 raw_metrics  # see the data
 
 
-# Step 8. Notice that there are lots of dois with NA values. Now write a function to remove all 
+# Step 8. Notice that there are lots of dois with NA values. Now write two functions to identify 
 # those dois that have NA values (because they have no data). 
-# This code comes from this source on github : https://gist.github.com/rhochreiter/7029236
+# This code is adapted from this source on github : https://gist.github.com/rhochreiter/7029236
 
-na.omit.list <- function(y) { 
-  return(y[!sapply(y, function(x) all(is.na(x)))]) 
-  } 
+# Step 8a. This function identifies a doi with NA values.
+
+identifyNa <- function(x) {
+  all(is.na(x))
+}
+
+
+# Step 8b. This function sends every doi in raw_metrics to the function we defined in step 8b.
+# If a doi does not have an NA value, it is returned and added to raw_metrics_non_na (see step 9).
+
+noNaList <- function(x) {
+  return(x[!sapply(x, function(y) identifyNa(y))])
+}
 
 
 # Step 9. You haven't actually removed the values yet. Now remove those NA values by passing the raw_metrics
-# data into the function just created, na.omit.list(). 
+# data into the function just created--noNaList()--and only copy those values into raw_metrics_non_na that don't have NA values. 
 
-raw_metrics <- na.omit.list(raw_metrics)
+raw_metrics_non_na <- noNaList(raw_metrics)
+
 
 # Step 10. Now use ldply() to apply the altmetric_data function to get the actual data and return results as a data frame.
 
-metric_data <- ldply(raw_metrics, altmetric_data)
+metric_data <- ldply(raw_metrics_non_na, altmetric_data)
 
 
 #### Section 3. Data Cleaning, Subsetting and Filtering ####
