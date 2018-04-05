@@ -13,7 +13,7 @@ A sample dataset has been provided that is a CSV file with a list of DOIs. If yo
 
 #### How to Run this Script
 
-* First check out the [R session info](https://github.com/alblaine/altmetrics-with-r/blob/master/sessionInfo.txt) file to see what versions of the software you will need to run this code. 
+* First check out the [R session info](sessionInfo.txt) file to see what versions of the software you will need to run this code. 
 * Make sure you have R installed (and we also recommend RStudio in addition to R)
 * Download or clone this repository to a folder on your computer. 
 * Open RStudio and in your Files tab, navigate to the folder. 
